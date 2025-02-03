@@ -4,7 +4,7 @@
     "position": "top",
     "height": 30,
     "width": 2560,
-    "spacing": 2,
+    "spacing": 1,
     "modules-left": [
         "sway/workspaces",
         "tray",
@@ -17,6 +17,7 @@
     "modules-right": [
     "sway/scratchpad",
     "idle_inhibitor",
+    "custom/kernel",
     "disk#ssd",
     "temperature",
     "cpu",
@@ -24,10 +25,10 @@
     "bluetooth",
     "network",
     "pulseaudio",
-    "sway/language",
     "clock",
     "custom/weather"
     ],
+    
      "sway/workspaces": {
          "disable-scroll": false,
          "all-outputs": true,
@@ -44,13 +45,9 @@
     //         "default": ""
          }
      },
-    "sway/language": {
-        "format": "{short} ",
-        "tooltip-format": "{long}"
-    },
     "bluetooth": {
         "format-on": "bt ",
-        "format-off": "{status} ",
+        "format-off": "bt ({status}) ",
         "format-connected": "{device_alias} ",
         "format-connected-battery": "{device_alias} [{device_battery_percentage}%] ",
         "format-device-preference": [ "ugreen_1", "ugreen_2" ],
@@ -63,14 +60,15 @@
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpris": {
-        // "interval": 30,
+        "interval": 15,
     	"format": "{player_icon} {dynamic}",
     	"format-paused": "{status_icon} <i>{dynamic}</i>",
     	"dynamic-order": ["artist", "title"],
     	"player-icons": {
             "default": "▶",
             "firefox": "▶",
-            "tidal-hifi": "🎵"
+            "tidal-hifi": "🎵",
+            "cmus": "🎵"
     	},
     	"status-icons": {
             "paused": "⏸"
@@ -107,11 +105,11 @@
                     "on-scroll"     : 1,
                     "on-click-right": "mode",
                     "format": {
-                              "months":     "<span color='#ff79c6'><b>{}</b></span>",
-                              "days":       "<span color='#f8f8f2'><b>{}</b></span>",
-                              "weeks":      "<span color='#50fa7d'>W{}</span>",
-                              "weekdays":   "<span color='#ffb86c'><b>{}</b></span>",
-                              "today":      "<span color='#f1fa8c'><b><u>{}</u></b></span>"
+                              "months":     "<span color='#cba6f7'><b>{}</b></span>",
+                              "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                              "weeks":      "<span color='#94e2d5'>W{}</span>",
+                              "weekdays":   "<span color='#f9e2af'><b>{}</b></span>",
+                              "today":      "<span color='#f5e0dc'><b><u>{}</u></b></span>"
                               }
                     },
         "actions":  {
@@ -164,11 +162,15 @@
         "format-disconnected": "Disconnected ⚠"
     },
     "custom/weather": {
-        "interval": 900,
+        "interval": 600,
         "exec": "~/.config/waybar/wittr.sh nyiregyhaza",
         "return-type": "json",
         "format": "{}",
         "tooltip": true
+    },
+    "custom/kernel": {
+        "exec": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+)-.*-([a-zA-Z0-9]+)/\\1-\\2/'",
+        "format": "{} "
     },
     "pulseaudio": {
         "scroll-step": 2,
