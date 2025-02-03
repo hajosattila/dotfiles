@@ -1,15 +1,16 @@
 @import url("./colors.css");
+
 * {
     border: none;
-    border-radius: 2px;
-    font-family: JetBrains Mono, FontAwesome;
+    border-radius: 1px;
+    font-family: JetBrainsMono Nerd Font, Font Awesome;
     font-size: 13px;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: @background-darker;
-    color: @foreground;
+    background-color: @mantle;
+    color: @text;
 }
 
 window#waybar.hidden {
@@ -17,53 +18,53 @@ window#waybar.hidden {
 }
 
 tooltip {
-    background-color: @background;
-    border: 1px solid @selection;
+    background-color: @base;
+    border: 1px solid @surface1;
 }
 
 tooltip label {
-    color: @foreground;
+    color: @text;
 }
 
 button {
     box-shadow: inset 0 -3px transparent;
     border: none;
-    border-radius: 2px;
+    border-radius: 1;
 }
 
 button:hover {
-    background-color: inherit;
-    box-shadow: inset 0 -3px @foreground;
+    background: inherit;
+    box-shadow: inset 0 -3px @text;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: @background-darker;
-    color: @foreground;
+    padding: 0 0;
+    background-color: @mantle;
+    color: @text;
 }
 
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    background-image: linear-gradient(0deg, @selection, @background-darker);
+    background-image: linear-gradient(0deg, @surface1, @mantle);
 }
 
 #workspaces button.focused {
-    background-image: linear-gradient(0deg, @purple, @selection);
-    box-shadow: inset 0 -3px @foreground;
+    background-image: linear-gradient(0deg, @mauve, @surface1);
+    box-shadow: inset 0 -3px @text;
 }
 
 #workspaces button.urgent {
-    background-image: linear-gradient(0deg, @red, @background-darker);
+    background-image: linear-gradient(0deg, @red, @mantle);
 }
 
 #taskbar button.active {
-    background-image: linear-gradient(0deg, @selection, @background-darker);
+    background-image: linear-gradient(0deg, @surface1, @mantle);
 }
 
 #mode {
-    background-color: @background;
-    box-shadow: inset 0 -2px @foreground;
+    background-color: @base;
+    box-shadow: inset 0 -2px @text;
 }
 
 #mpris,
@@ -77,13 +78,14 @@ button:hover {
 #cpu,
 #temperature,
 #disk,
+#custom-kernel,
 #idle_inhibitor,
 #scratchpad,
 #mode,
 #tray {
     padding: 0 10px;
     margin: 5px 1px;
-    color: @foreground;
+    color: @text;
 }
 
 #window,
@@ -100,85 +102,94 @@ button:hover {
 }
 
 #custom-weather {
-    background-color: @foreground;
-    color: @background-darker;
+    background-color: @teal;
+    color: @mantle;
     margin-right: 5px;
 }
 
+#custom-kernel {
+    background-color: @rosewater;
+    color: @mantle;
+}
+
 #clock {
-    background-color: @orange;
-    color: @background-darker;
+    background-color: @green;
+    color: @mantle;
 }
 
 @keyframes blink {
     to {
-        background-color: @background-darker;
-        color: @foreground;
+        background-color: @mantle;
+        color: @text;
     }
 }
 
 label:focus {
-    background-color: @background-darker;
+    background-color: @mantle;
 }
 
 #cpu {
-    background-color: @yellow;
-    color: @background-darker;
+    background-color: @mauve;
+    color: @mantle;
+    min-width: 45px;
 }
 
 #memory {
-    background-color: @yellow;
-    color: @background-darker;
+    background-color: @red;
+    color: @mantle;
 }
 
 #disk {
-    background-color: @orange;
-    color: @background-darker;
+    background-color: @flamingo;
+    color: @mantle;
 }
 
 #network {
-    background-color: @cyan;
-    color: @background-darker;
+    background-color: @peach;
+    color: @mantle;
 }
 
 #network.disconnected {
-    background-color: @red;
-    color: @background-darker;
+    background-color: red;
+    color: @mantle;
 }
 
 #bluetooth {
-    background-color: @cyan;
-    color: @background-darker;
+    background-color: @maroon;
+    color: @mantle;
+    min-width: 40px;
 }
 
 #pulseaudio {
-    background-color: @purple;
-    color: @background-darker;
+    background-color: @yellow;
+    color: @mantle;
 }
 
 #pulseaudio.muted {
-    background-color: @purple;
-    color: @background-darker;
+    background-color: red;
+    color: @mantle;
 }
 
 #temperature {
     background-color: @pink;
-    color: @background-darker;
+    color: @mantle;
+    min-width: 37px;
 }
 
 #temperature.critical {
-    background-color: @red;
-    color: @background-darker;
+    background-color: red;
+    color: @mantle;
+    min-width: 37px;
 }
 
 #mpris {
-    background-color: @background;
-    color: @foreground;
+    background-color: @base;
+    color: @text;
 }
 
 #tray {
-    background-color: @comment;
-    color: @foreground;
+    background-color: @overlay0;
+    color: @text;
 }
 
 #tray > .passive {
@@ -187,30 +198,25 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: @background-darker;
+    background-color: @mantle;
 }
 
 #idle_inhibitor {
-    background-color: @background;
-    color: @foreground;
+    background-color: @base;
+    color: @text;
+    font-family: Inter;
 }
 
 #idle_inhibitor.activated {
-    background-color: @foreground;
-    color: @background;
-}
-
-#language {
-    background-color: @green;
-    color: @background-darker;
-    min-width: 40px;
+    background-color: @text;
+    color: @base;
 }
 
 #scratchpad {
-    background-color: @background;
-    color: @foreground;
+    background-color: @base;
+    color: @text;
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+    background-color: transparent;
 }
