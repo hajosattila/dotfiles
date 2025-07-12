@@ -29,7 +29,7 @@ tooltip label {
 button {
     box-shadow: inset 0 -3px transparent;
     border: none;
-    border-radius: 1;
+    border-radius: 1px;
 }
 
 button:hover {
